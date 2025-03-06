@@ -85,7 +85,8 @@ router.get("/google/callback", async (req, res) => {
     );
 
     console.log("✅ Redirecting to:", `${process.env.CLIENT_URL}/auth/success?token=${authToken}`);
-    res.redirect(`${process.env.CLIENT_URL}/auth/success?token=${authToken}`);
+    // ✅ Corrected redirect (matches frontend route)
+    res.redirect(`${process.env.CLIENT_URL}/auth-redirect?token=${authToken}`);
   } catch (error) {
     console.error("❌ OAuth Callback Error:", error);
     res.redirect(`${process.env.CLIENT_URL}/auth/error?message=${encodeURIComponent(error.message)}`);
